@@ -13,6 +13,8 @@ class WeatherCubit extends Cubit<WeatherState> {
   Future<void> getWeather(String cityName) async {
     try {
       // first load the weather is loading
+      /// Emit is same to yield but it hides the streams
+      /// it rather has stream controller inside and use it pass the data to streams
       emit(const WeatherLoading());
       final weather = await _weatherRepository.fetchWeather(cityName);
       emit(WeatherLoaded(weather));
